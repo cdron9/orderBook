@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include "orderbook.h"
 #include "types.h"
 
 
@@ -32,6 +34,14 @@ int main(void) {
                     break;
                 case SCREEN_EXECUTE:
                     printf("\n=== EXECUTE ORDER ===\n");
+                    Order order;
+                    // TODO: this whole thing loops 
+                    // each function needs to only execute once.
+                    order.type = GetOrderType();
+                    order.quantity = GetOrderQuantity();
+                    order.price = GetOrderPrice();
+                    order.stock = GetOrderTicker();
+
                     printf("[1] Back to Orderbook\n");
                     break;
             }

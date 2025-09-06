@@ -20,7 +20,7 @@ typedef enum {
 
 typedef struct {
     const char* symbol; // e.g. (AAPL)
-    int quantity;       // available quantity
+    double quantity;    // available quantity
     double price;       // current price of stock
 } Stock;    
 
@@ -32,9 +32,10 @@ typedef struct {
 
 typedef struct {
     OrderType type;     // ordertype as per enum
-    double quanitity;   // how many shares to execute
+    double quantity;   // how many shares to execute
     double price;       // what price to execute at (ONLY USED FOR LIMIT ORDERS)
-    char stock[5];      // ticker symbol
+    char* stock;      // ticker symbol
+    int orderId;
 } Order;
 
 

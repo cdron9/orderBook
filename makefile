@@ -1,2 +1,2 @@
-main.out: main.c
-	gcc main.c -o orderbook
+main.out: main.c orderbook.c
+	gcc main.c orderbook.c -o orderbook
