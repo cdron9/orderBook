@@ -3,8 +3,11 @@
 
 #include "types.h"
 
-double ShowUserCash(void);
-double ShowUserPNL(void);
+double GetUserCash(void);
+double GetUserPNL(void);
+
+void ShowUserCash(void);
+void ShowUserPNL(void);
 Stock ShowHoldings(void);
 
 #endif

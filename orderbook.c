@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
+#include "stock.h"
 #include "types.h"
 #include "orderbook.h"
 
@@ -95,9 +96,8 @@ char* GetOrderTicker(void)
     scanf("%15s", symbol);
     
     for (int i = 0; symbol[i]; i++) {
-        symbol[i] = toupper((unsigned char) symbol[i]);
+        symbol[i] = tolower((unsigned char) symbol[i]);
     }
 
     return symbol;
 }
-

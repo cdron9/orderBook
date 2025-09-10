@@ -4,18 +4,23 @@
 #include "orderbook.h"
 #include "types.h"
 #include "user.h"
+#include "stock.h"
 
+extern User u;
 
 int main(void) {
     printf("\033[2J\033[H");
     Screen current_screen = SCREEN_ORDERBOOK;
+
+    GetUserCash();
+    GetUserPNL();
 
     // main program loop
     bool running = true;
 
     while (running) {
         printf("\033[2J\033[H");
-
+        
         // alwats show orderbook first
         printf("=== ORDERBOOK ===\n");
         // TODO: print orderbook here
@@ -27,7 +32,7 @@ int main(void) {
                     break;
                 case SCREEN_ACCOUNT:
                     printf("\n=== ACCOUNT ===\n");
-                    User u;
+
                     ShowUserCash();
                     ShowUserPNL();
                     printf("[1] Back to Orderbook\n");
