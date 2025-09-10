@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "orderbook.h"
 #include "types.h"
+#include "user.h"
 
 
 int main(void) {
@@ -26,6 +27,9 @@ int main(void) {
                     break;
                 case SCREEN_ACCOUNT:
                     printf("\n=== ACCOUNT ===\n");
+                    User u;
+                    ShowUserCash();
+                    ShowUserPNL();
                     printf("[1] Back to Orderbook\n");
                     break;
                 case SCREEN_SEARCH:
@@ -38,9 +42,10 @@ int main(void) {
                     // TODO: this whole thing loops 
                     // each function needs to only execute once.
                     order.type = GetOrderType();
+                    printf("WARNING: if the entered integer is formatted, on accident, as (int char), scanf will finish reading after first valid numbers found.\n");
                     order.quantity = GetOrderQuantity();
                     order.price = GetOrderPrice();
-                    order.stock = GetOrderTicker();
+                    order.symbol = GetOrderTicker();
 
                     printf("[1] Back to Orderbook\n");
                     break;

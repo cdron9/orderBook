@@ -1,17 +1,12 @@
 #include "user.h"
 #include "types.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(void) {
-    // define user variables
-
-}
-
-User create_user(double initial_cash)
+double ShowUserCash(void)
 {
-    User u;
-    u.cash = initial_cash;
-    u.holdings[x];          // need to figure out how to use this array.
-    u.pnl = 0.0;
 }
 
+double ShowUserPNL(void)
+{
+}

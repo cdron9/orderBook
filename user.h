@@ -3,7 +3,8 @@
 
 #include "types.h"
 
-User create_user(double initial_cash);
-
+double ShowUserCash(void);
+double ShowUserPNL(void);
+Stock ShowHoldings(void);
 
 #endif

@@ -38,18 +38,24 @@ OrderType GetOrderType(void)
 
 double GetOrderQuantity(void)
 {
-    printf("Enter how much stock you want to execute order on: ");
     double OrderQuantity;
-    scanf("%lf", &OrderQuantity);
 
-    if (OrderQuantity > 0) {
-        return OrderQuantity;
-    } else {
-        printf("Invalid quantity, must be greater than 0 and less that available stock quantity\n");
-        return 0;
+    while (1) {
+        printf("Enter order quantity: ");
+
+        if (scanf("%lf", &OrderQuantity) != 1) {
+            printf("Value must be a number and only 1 value\n");
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF); // flush invalid input
+            continue;
+        }
+
+        if (OrderQuantity > 0) {
+            return OrderQuantity;
+        } else {
+            printf("Quantity must be positive.\n");
+        }
     }
-
-    return 0;
 }
 
 // TODO fix input issues 
@@ -73,9 +79,9 @@ double GetOrderPrice(void)
         }
 
         // check if valid positive number
-        if (ExecutionPrice > 0) {
+        if (ExecutionPrice > 0) 
             return ExecutionPrice;
-        } else {
+        else {
             printf("Execution price must be positive.\n");
         }
     }
@@ -84,15 +90,14 @@ double GetOrderPrice(void)
 
 char* GetOrderTicker(void)
 {
-    static char ticker[32];
+    static char symbol[16];
     printf("Enter stock ticker: ");
-    scanf("%31s", ticker);
+    scanf("%15s", symbol);
     
-    for (int i = 0; ticker[i]; i++) {
-        ticker[i] = tolower((unsigned char) ticker[i]);
+    for (int i = 0; symbol[i]; i++) {
+        symbol[i] = toupper((unsigned char) symbol[i]);
     }
 
-    return ticker;
+    return symbol;
 }
-
 

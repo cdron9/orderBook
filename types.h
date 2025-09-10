@@ -19,7 +19,7 @@ typedef enum {
 } OrderType;
 
 typedef struct {
-    const char* symbol; // e.g. (AAPL)
+    char* symbol;    // e.g. (AAPL)
     double quantity;    // available quantity
     double price;       // current price of stock
 } Stock;    
@@ -32,12 +32,27 @@ typedef struct {
 
 typedef struct {
     OrderType type;     // ordertype as per enum
-    double quantity;   // how many shares to execute
+    double quantity;    // how many shares to execute
     double price;       // what price to execute at (ONLY USED FOR LIMIT ORDERS)
-    char* stock;      // ticker symbol
+    char* symbol;    // ticker symbol
     int orderId;
 } Order;
 
+typedef struct {
+    Order* orders;
+    int size;
+    int capacity;
+} OrderList;
 
-#endif // TYPES_H
+typedef struct {
+    char* symbol;        // ticker
+    OrderList buy_orders;   // descending price
+    OrderList sell_orders;  // ascending price  
+    double last_price;      // last matched price
+} OrderBook;
+
+// OrderBook tracks buy/sell sides and last traded price.
+// last price can be used to show constantly updating price to user
+
+#endif
 
